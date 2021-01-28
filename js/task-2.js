@@ -6,15 +6,11 @@ const imageOriginalRef = document.querySelector('.js-image__1280px');
 const imageRef = galleryRef.querySelectorAll('img');
 let indexImage = 0;
 
-
-
 galleryRef.addEventListener('click', openModalWindow);
-buttonClosedRef.addEventListener('click', closeModalWindow);
-backdropRef.addEventListener('click', closeModalWindowClick);
 
 
 function openModalWindow(event) {
-    event.preventDefault();
+    event.preventDefault()
     if (event.target.nodeName !== 'IMG') {
         return;
     }
@@ -22,15 +18,16 @@ function openModalWindow(event) {
     const sourceImages = event.target.dataset.source;
     const altIMage = event.target.alt;
      indexImage = Number(event.target.dataset.index);
-
     
-  
     imageOriginalRef.src = sourceImages;
     imageOriginalRef.alt = altIMage;
     imageOriginalRef.dataset.index = indexImage;
-    window.addEventListener('keydown', pressKey)
+
+    window.addEventListener('keydown', pressKey);
+    backdropRef.addEventListener('click', closeModalWindowClick);
+    buttonClosedRef.addEventListener('click', closeModalWindow);
     return indexImage;
-}
+};
 
  
 function pressKey(event) {
@@ -68,10 +65,11 @@ function closeModalWindowClick(event) {
     closeModalWindow()
 }
 
-}
+};
 
 function closeModalWindow() { 
-   
+    buttonClosedRef.removeEventListener('click', closeModalWindow);
+    backdropRef.removeEventListener('click', closeModalWindowClick);
     window.removeEventListener('keydown', pressKey)
 
     backdropRef.classList.remove('is-open');
@@ -85,7 +83,7 @@ function setImageOrigin() {
             imageOriginalRef.dataset.index = imageRef[indexImage].dataset.index
             imageOriginalRef.alt = imageRef[indexImage].alt;
             imageOriginalRef.src = imageRef[indexImage].dataset.source;   
-}
+};
 
 
 
