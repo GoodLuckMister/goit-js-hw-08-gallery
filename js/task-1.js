@@ -5,6 +5,7 @@ const galleryRef = document.querySelector('.js-gallery');
 
 galleryElements.forEach(image => madeGallery(image));
 
+
 function madeGallery() {
     
     galleryRef.insertAdjacentHTML('afterbegin', `
@@ -25,6 +26,7 @@ function setElementImage(element, key) {
     element.dataset.index = galleryElements[key].index;
 
 };
+
 
 function setLinksImage(element, key) { 
     element.href = galleryElements[key].original;

@@ -1,6 +1,5 @@
 
 const galleryRef = document.querySelector('.js-gallery');
-const buttonClosedRef = document.querySelector('button[data-action="close-lightbox"]');
 const backdropRef = document.querySelector('.js-lightbox');
 const imageOriginalRef = document.querySelector('.js-image__1280px');
 const imageRef = galleryRef.querySelectorAll('img');
@@ -25,7 +24,6 @@ function openModalWindow(event) {
 
     window.addEventListener('keydown', pressKey);
     backdropRef.addEventListener('click', closeModalWindowClick);
-    buttonClosedRef.addEventListener('click', closeModalWindow);
     return indexImage;
 };
 
@@ -68,7 +66,6 @@ function closeModalWindowClick(event) {
 };
 
 function closeModalWindow() { 
-    buttonClosedRef.removeEventListener('click', closeModalWindow);
     backdropRef.removeEventListener('click', closeModalWindowClick);
     window.removeEventListener('keydown', pressKey)
 
